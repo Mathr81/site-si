@@ -1,0 +1,177 @@
+﻿
+
+<html>
+	
+<head>
+	<title>Ardublock</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 9.0.0.156">
+	<meta name="description" content="" /> 
+	<meta name="keywords" content="">
+	
+	
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #000080;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "Index.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Ardublock");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	
+</head>
+
+<body>
+
+
+
+	
+		<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Ardublock</h1>
+				
+				
+			</div>
+			
+			<div id="topic_header_nav">
+				
+				
+				<a href="Materiels-Logiciels1.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				
+				
+				<a href="Arduino.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				
+				
+				<a href="LesBlocs.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+	
+	
+	<div id="topic_content">
+		
+<p class="rvps3"><span class="rvts6"><br/></span></p>
+<div class="rvps3">
+<table width="100%" cellpadding="0" style="border-width: 0px; border-spacing: 0px; margin: 0px auto;">
+ <tr style="vertical-align: top;">
+  <td style="border-width : 1px; border-color: canvastext; border-style: solid; padding: 0px; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps5"><img alt="" style="width : 388px; height : 87px; padding : 1px;" src="lib/banniere_barral.png"><span class="rvts15"> </span><span class="rvts16">Science de l'Ingénieur</span></p>
+   <p class="rvps3"><span class="rvts30"><br/></span></p>
+  </td>
+ </tr>
+ <tr style="vertical-align: top;">
+  <td style="border-width : 1px; border-color: #666699; border-style: solid; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps17"><span class="rvts27">ARDUBLOCK</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps3"><img alt="" style="width : 227px; height : 96px; padding : 1px;" src="lib/NouvelElement16.png"></p>
+<p class="rvps2"><span class="rvts35">La programmation des cartes est possible à partir d'autres logiciels (Flowcode, mblock,scratch, ....), dans cette partie ne sera traitée que la programmation par le plugin </span><span class="rvts36">ARDUBLOCK</span><span class="rvts35"> </span><span class="rvts19">qui s'ajoute à l’environnement de programmation Arduino.</span></p>
+<p class="rvps3"><span class="rvts33"><br/></span></p>
+<p class="rvps16"><span class="rvts28">Langage de programmation graphique.</span></p>
+<p class="rvps18"><span class="rvts19">Il permet de programmer des cartes Arduino graphiquement à partir de blocs, pour générer ensuite les lignes de codes en langage C.&nbsp;</span></p>
+<p class="rvps18"><span class="rvts30"><br/></span></p>
+<div class="rvps18">
+<table width="100%" cellpadding="1" style="border-color: canvastext; border-style: solid; border-width: 1px; border-spacing: 2px;">
+ <tr style="vertical-align: top;">
+  <td rowspan="2" style="padding: 1px; width: 554px; height: 177px;">
+   <p class="rvps19"><span class="rvts20">1-</span><span class="rvts19"> L’accès au module de programmation se fait par l'intermédiaire de l'interface&nbsp;</span></p>
+   <p class="rvps19"><span class="rvts19">&nbsp; &nbsp; Arduino par le menu &nbsp;"</span><span class="rvts20">Outils</span><span class="rvts19">" puis cliquez sur "</span><span class="rvts20">ArduBlock</span><span class="rvts19">".</span></p>
+   <p class="rvps19"><span class="rvts19"><br/></span></p>
+   <p class="rvps20"><img alt="" style="width : 416px; height : 284px; padding : 1px;" src="lib/NouvelElement30.png"></p>
+   <p class="rvps20"><span class="rvts19">&nbsp;</span></p>
+  </td>
+  <td colspan="2" style="padding: 1px; width: 543px; height: 38px;">
+   <p class="rvps11"><span class="rvts20">3-</span><span class="rvts19"> Le menu des blocks est divisé en plusieurs catégories :</span></p>
+  </td>
+ </tr>
+ <tr style="vertical-align: top;">
+  <td style="padding: 1px; width: 180px; height: 177px;">
+   <p class="rvps12"><img alt="" style="padding : 1px;" src="lib/NouvelElement32.png"></p>
+   <p class="rvps12"><span class="rvts6"><br/></span></p>
+  </td>
+  <td style="padding: 1px; width: 363px;">
+   <p class="rvps12"><span class="rvts19">Le menu </span><span class="rvts34">Contrôles</span><span class="rvts19"> contient les blocs permettant de réaliser la structure ou l’architecture du programme.</span></p>
+   <p class="rvps12"><span class="rvts19">Le menu </span><span class="rvts34">Broches</span><span class="rvts19">&nbsp;</span></p>
+   <p class="rvps12"><span class="rvts19">...</span></p>
+   <p class="rvps12"><span class="rvts19">...</span></p>
+   <p class="rvps12"><span class="rvts19">Des blocs propres à des constructeurs.</span></p>
+  </td>
+ </tr>
+ <tr style="vertical-align: top;">
+  <td style="padding: 1px; width: 554px;">
+   <p class="rvps11"><span class="rvts20">2-</span><span class="rvts19"> L’interface graphique d’Ardublock apparaît :</span></p>
+   <p class="rvps11"><span class="rvts19"><br/></span></p>
+   <p class="rvps11"><img alt="" style="width : 557px; height : 338px; padding : 1px;" src="lib/NouvelElement31.png"></p>
+   <p class="rvps11"><span class="rvts19"><br/></span></p>
+  </td>
+  <td colspan="2" style="padding: 1px; width: 543px;">
+   <p class="rvps21"><span class="rvts20">4-</span><span class="rvts19"> Le programme est visible sous deux formes :</span></p>
+   <p class="rvps21"><span class="rvts19">&nbsp; &nbsp; &nbsp; - sous une forme d'assemblage de type Puzzle ci-dessous à&nbsp;</span></p>
+   <p class="rvps21"><span class="rvts19">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;gauche,</span></p>
+   <p class="rvps21"><span class="rvts6">&nbsp; &nbsp; &nbsp;</span><span class="rvts19"> - sous une forme de lignes de programmes (langage C ci-dessous &nbsp;&nbsp;</span></p>
+   <p class="rvps21"><span class="rvts19">&nbsp; &nbsp; &nbsp; &nbsp; à droite).</span></p>
+   <p class="rvps20"><img alt="" style="width : 492px; height : 267px; padding : 1px;" src="lib/NouvelElement23.png"></p>
+   <p class="rvps21"><span class="rvts6"><br/></span></p>
+   <p class="rvps21"><span class="rvts6"><br/></span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p></p>
+<p class="rvps7" style="clear: both;"><span class="rvts21">Créé avec HelpNDoc Personal Edition: </span><a class="rvts22" href="https://www.helpndoc.com/fr/creer-des-livres-numeriques-epub">Produire des livres EPub gratuitement</a></p>
+
+	</div>
+	
+	
+		<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				http://jeanpaul.bousquet.free.fr
+			</div>
+		</div>
+	
+	
+
+	
+</body>
+	
+</html>
+

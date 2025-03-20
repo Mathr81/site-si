@@ -1,0 +1,759 @@
+﻿
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<title>Initiation programmation Arduino - Table of Contents</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 9.0.0.156">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/silver-theme/jquery-ui-1.8.12.custom.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/dynatree/vista/ui.dynatree.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/toc.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#tabs .ui-widget-header
+		{
+			background-color: #000080;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.dynatree.min.js"></script>
+	<script type="text/javascript" src="js/hndjsse.js"></script>
+	<script type="text/javascript">
+	
+		window.bSearchDataLoaded = false;
+		var sHelpIdToActivate = '';
+	
+		$(document).ready(function()
+		{
+			var sAnchorName = '';
+			try { sAnchorName = top.location.href.substring(top.location.href.lastIndexOf("#") + 1, top.location.href.length); }
+			catch(err) { sAnchorName = ''; }
+			var nSelectedTab = 0;
+			if (sAnchorName == '_index') nSelectedTab = 1
+			else if (sAnchorName == '_search') nSelectedTab = 2;			
+			$("#tabs").tabs({
+				selected: nSelectedTab,
+				select: function(event, ui) { HideKwPopup(); }
+			});
+			
+			// Toc
+			if ($("#tab-toc").length) {
+				$("#tab-toc").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/vista/',
+					onActivate: function(node){
+						if ($("#tab-keywords").length && $("#tab-keywords").dynatree && $("#tab-keywords").dynatree("getTree") && $("#tab-keywords").dynatree("getTree").activateKey)
+							$("#tab-keywords").dynatree("getTree").activateKey(null);
+						if(node.data.href && node.data.href != '#'){
+							window.open(node.data.href, node.data.target);
+						}
+					}
+				});
+				// Expand all nodes if required
+				
+					$("#tab-toc").dynatree("getRoot").visit(function(node){
+						node.expand(true);
+					});
+					
+				// Select the active help id
+				if (sHelpIdToActivate != '') $("#tab-toc").dynatree("getTree").activateKey(sHelpIdToActivate);
+			}
+			
+			// Keywords
+			
+			if ($("#tab-keywords").length) {
+				$("#tab-keywords").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/vista/',
+					onClick: function(node, event){
+						HideKwPopup();
+						if (node.data && node.data.click)
+						{
+							var aRefList = null;
+							eval('aRefList=' + node.data.click);
+							if (ShowKwPopup(node.li, aRefList))
+							{
+								if ($("#tab-toc") && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").activateKey)
+									$("#tab-toc").dynatree("getTree").activateKey(null);
+								if(node.data.href && node.data.href != '#'){
+									window.open(node.data.href, node.data.target);
+								}
+							}
+						}
+					}
+				});
+				// Expand all nodes if required
+				
+			}
+			
+			// Load search data
+			(function() {
+				var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+				se.src = 'js/hndsd.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+			})();
+		});
+		
+		$('body').click(function() {
+			HideKwPopup();
+		});
+		
+		function SelectTocItem(sHelpId)
+		{
+			if ($("#tab-toc").length && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").getNodeByKey) {
+				var aNode = $("#tab-toc").dynatree("getTree").getNodeByKey(sHelpId);
+				if (aNode) {
+					aNode.activateSilently();  
+				}
+			}
+			else {
+				sHelpIdToActivate = sHelpId;
+			}
+		}
+		
+		function HideKwPopup()
+		{
+			if($("#popupMenu")) $("#popupMenu").remove();
+		}
+		
+		function ShowKwPopup(oSender, aLinks)
+		{
+			HideKwPopup();
+			if (!aLinks || !aLinks.length || aLinks.length == 0) return false
+			else if (aLinks.length == 1) return true
+			else
+			{
+				var oParentDiv = document.createElement("DIV");
+				oParentDiv.id = "popupMenu";
+				var oLink = null;
+				// Close button
+				oLink = document.createElement("SPAN");
+				oLink.className = "close-button";
+				oLink.innerHTML = "X";
+				oLink.href = "#";
+				oLink.onclick = HideKwPopup;
+				oParentDiv.appendChild(oLink);
+				// Items
+				for (var nCnt=0; nCnt<aLinks.length; nCnt++)
+				{
+					oLink = document.createElement("A");
+					oLink.innerHTML = aLinks[nCnt][0];
+					oLink.href = aLinks[nCnt][1];
+					oLink.target = "FrameMain";
+					oLink.onclick = HideKwPopup;
+					oParentDiv.appendChild(oLink);
+				}
+				document.body.appendChild(oParentDiv);
+				var pos = $(oSender).offset(); 
+				var height = $(oSender).height();
+				$(oParentDiv).css({
+					"left": (pos.left+20) + "px",
+					"top": (pos.top + height + 5) + "px"
+				});
+				$(oParentDiv).show();
+				return false;
+			}
+		}
+		
+		function PerformSearch()
+		{
+			if (!window.bSearchDataLoaded) {
+				$("#search_results").html("Search engine data hasn't been fully loaded yet or an error occurred while loading it. This usually happens when documentation is browsed locally.");
+				return;
+			}
+			sValue = $("#search_value").val();
+			$("#search_results").html('Searching...');
+			var oSearchEngine = new HndJsSe;
+			oSearchEngine.ParseInput(sValue);			
+			oSearchEngine.PerformSearch();
+			if (!oSearchEngine.aResults || !oSearchEngine.aResults.length)
+			{
+				$("#search_results").html('No results found.');
+			}
+			else
+			{
+				$("#search_results").html('<div id="search_results_content"></div>');
+				var oUl = $("#search_results_content").append("<ul id='lr'></ul>").find("ul");
+				for (var nCnt = 0; nCnt < oSearchEngine.aResults.length; nCnt++)
+				{
+					if (oSearchEngine.aResults[nCnt][0] < aTl.length)
+					{
+						oUl.append("<li><a href='" + aTl[oSearchEngine.aResults[nCnt][0]][0] + "?search=" + escape(sValue) + "' target='FrameMain'>" + unescape(aTl[oSearchEngine.aResults[nCnt][0]][1]) + "</a></li>");
+					}
+				}
+				// Tree
+				$("#search_results_content").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/vista/',
+					onActivate: function(node){
+						if ($("#search_results_content") && $("#search_results_content").dynatree && $("#search_results_content").dynatree("getTree") && $("#search_results_content").dynatree("getTree").activateKey)
+							$("#search_results_content").dynatree("getTree").activateKey(null);
+						if(node.data.href && node.data.href != '#'){
+							window.open(node.data.href, node.data.target);
+						}
+					}
+				});
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<div id="tabs">
+		<ul>
+			
+				<li><a href="#tab-toc">Contenu</a></li>
+			
+		</ul>
+		
+		<div id="tab-toc">
+			<ul id="toc" class="">
+
+				
+
+						<li class="folder" id="Introduction" data="icon: '1.png'">
+							<a
+							href="Introduction.html"
+							target="FrameMain">
+								Introduction
+							</a>
+
+				<ul>
+
+						<li class="folder" id="Lescoursetannexes" data="icon: '5.png'">
+							<a
+							href="Lescoursetannexes.html"
+							target="FrameMain">
+								Les cours et annexes
+							</a>
+
+				<ul>
+
+						<li class="" id="Fiche00-Analysefonctionnelle" data="icon: '10.png'">
+							<a
+							href="Documents\FICHE00-Analyse fonctionnelle-sysml.pdf"
+							target="FrameMain">
+								Fiche00-Analyse fonctionnelle
+							</a>
+
+				</li>
+
+						<li class="" id="Fiche01-Sinitieralaprogrammation" data="icon: '10.png'">
+							<a
+							href="Documents/FICHE01-Algorithme.pdf"
+							target="FrameMain">
+								Fiche01-S'initier &agrave; la programmation
+							</a>
+
+				</li>
+
+						<li class="" id="Fiche02-Lescapteurs" data="icon: '10.png'">
+							<a
+							href="Documents/FICHE02-Capteurs.pdf"
+							target="FrameMain">
+								Fiche02-Les capteurs
+							</a>
+
+				</li>
+
+						<li class="" id="Fiche03-DAO" data="icon: '10.png'">
+							<a
+							href="Documents/FICHE03_DAO.pdf"
+							target="FrameMain">
+								Fiche03-DAO
+							</a>
+
+				</li>
+
+						<li class="" id="Fiche04-Experimentation" data="icon: '10.png'">
+							<a
+							href="Documents/FICHE04-Experimentation.pdf"
+							target="FrameMain">
+								Fiche04-Exp&eacute;rimentation
+							</a>
+
+				</li>
+
+						<li class="" id="Annexe01-TableurExcel" data="icon: '10.png'">
+							<a
+							href="Documents/Annexes/annexe 1-excel.pdf"
+							target="FrameMain">
+								Annexe 01- Tableur Excel
+							</a>
+
+				</li>
+
+						<li class="" id="Annexe02-MiseenplanSW" data="icon: '10.png'">
+							<a
+							href="Documents/Annexes/annexe 2a-sw mise en plan.pdf"
+							target="FrameMain">
+								Annexe 02- Mise en plan SW
+							</a>
+
+				</li>
+
+						<li class="" id="Annexe03-Appareilsdemesure" data="icon: '10.png'">
+							<a
+							href="Documents/Annexes/annexe-3-appareils de mesures.pdf"
+							target="FrameMain">
+								Annexe 03- Appareils de mesure
+							</a>
+
+				</li></ul></li></ul></li>
+
+						<li class="folder" id="Materiels-Logiciels1" data="icon: '1.png'">
+							<a
+							href="Materiels-Logiciels1.html"
+							target="FrameMain">
+								Mat&eacute;riels-Logiciels
+							</a>
+
+				<ul>
+
+						<li class="" id="Arduino" data="icon: '10.png'">
+							<a
+							href="Arduino.html"
+							target="FrameMain">
+								Arduino
+							</a>
+
+				</li>
+
+						<li class="folder" id="Ardublock" data="icon: '5.png'">
+							<a
+							href="Ardublock.html"
+							target="FrameMain">
+								Ardublock
+							</a>
+
+				<ul>
+
+						<li class="" id="LesBlocs" data="icon: '10.png'">
+							<a
+							href="LesBlocs.html"
+							target="FrameMain">
+								Les Blocs 
+							</a>
+
+				</li></ul></li>
+
+						<li class="folder" id="Fritzing" data="">
+							<a
+							href="Fritzing.html"
+							target="FrameMain">
+								Fritzing
+							</a>
+
+				<ul>
+
+						<li class="" id="Installation" data="icon: '10.png'">
+							<a
+							href="Documents/utilisation_fritzing_installation.pdf"
+							target="FrameMain">
+								Installation
+							</a>
+
+				</li>
+
+						<li class="" id="Premierpas" data="icon: '10.png'">
+							<a
+							href="Documents/utilisation_fritzing_premierpas-3.pdf"
+							target="FrameMain">
+								Premier pas
+							</a>
+
+				</li>
+
+						<li class="" id="Importer" data="icon: '10.png'">
+							<a
+							href="Documents/utilisation_fritzing_importer_composant.pdf"
+							target="FrameMain">
+								Importer
+							</a>
+
+				</li></ul></li></ul></li>
+
+						<li class="folder" id="LesProjets" data="icon: '1.png'">
+							<a
+							href="LesProjets.html"
+							target="FrameMain">
+								Les Projets
+							</a>
+
+				<ul>
+
+						<li class="" id="T01-PiloteruneLED" data="icon: '8.png'">
+							<a
+							href="Documents/T01-LED.pdf"
+							target="FrameMain">
+								T01-Piloter une LED
+							</a>
+
+				</li>
+
+						<li class="" id="T02-Poubelleconnectee" data="icon: '8.png'">
+							<a
+							href="Documents/T02-Poubelle_connectée-eleve.pdf"
+							target="FrameMain">
+								T02-Poubelle connect&eacute;e
+							</a>
+
+				</li>
+
+						<li class="" id="T03-Helianthus" data="icon: '8.png'">
+							<a
+							href="Documents/T03-Hélianthus_eleve-V2.pdf"
+							target="FrameMain">
+								T03-H&eacute;lianthus
+							</a>
+
+				</li>
+
+						<li class="folder" id="T04-RobotParrot" data="icon: '8.png'">
+							<a
+							href="Documents/T04-parrot_eleve.pdf"
+							target="FrameMain">
+								T04-Robot Parrot
+							</a>
+
+				<ul>
+
+						<li class="" id="Dossiertechnique" data="">
+							<a
+							href="Documents/Dossier Tech-Jumping-Sumo.pdf"
+							target="FrameMain">
+								Dossier technique
+							</a>
+
+				</li>
+
+						<li class="" id="Guideutilisateur" data="">
+							<a
+							href="Documents/guide utilisateur.pdf"
+							target="FrameMain">
+								Guide utilisateur
+							</a>
+
+				</li></ul></li>
+
+						<li class="" id="T05-Arrosageconnectee" data="icon: '8.png'">
+							<a
+							href="Documents/T05-Arrosage_connectée.pdf"
+							target="FrameMain">
+								T05-Arrosage connect&eacute;e
+							</a>
+
+				</li>
+
+						<li class="" id="T06-Serreautonome" data="icon: '8.png'">
+							<a
+							href="Documents/SERRE_eleve.pdf"
+							target="FrameMain">
+								T06-Serre autonome
+							</a>
+
+				</li></ul></li>
+
+						<li class="folder" id="DocumentationARDUBLOCK" data="icon: '1.png'">
+							<a
+							href="DocumentationARDUBLOCK.html"
+							target="FrameMain">
+								Documentation ARDUBLOCK
+							</a>
+
+				<ul>
+
+						<li class="" id="ardublockpremier_pas" data="">
+							<a
+							href="Documents/ardublock_premier_pas.pdf"
+							target="FrameMain">
+								ardublock premier_pas
+							</a>
+
+				</li>
+
+						<li class="" id="afficherunportserie" data="">
+							<a
+							href="Documents/afficher_port_serie.pdf"
+							target="FrameMain">
+								afficher un port s&eacute;rie
+							</a>
+
+				</li>
+
+						<li class="" id="capteuraccelerometre" data="">
+							<a
+							href="Documents/capteur accélérometre.pdf"
+							target="FrameMain">
+								capteur acc&eacute;l&eacute;rometre
+							</a>
+
+				</li>
+
+						<li class="" id="capteurboutonpoussoir" data="">
+							<a
+							href="Documents/capteur bouton poussoir.pdf"
+							target="FrameMain">
+								capteur bouton poussoir
+							</a>
+
+				</li>
+
+						<li class="" id="capteurfindecourse" data="">
+							<a
+							href="Documents/capteur fin de course.pdf"
+							target="FrameMain">
+								capteur fin de course
+							</a>
+
+				</li>
+
+						<li class="" id="capteurhumidite" data="">
+							<a
+							href="Documents/capteur humidite.pdf"
+							target="FrameMain">
+								capteur humidite
+							</a>
+
+				</li>
+
+						<li class="" id="capteurjoystick" data="">
+							<a
+							href="Documents/capteur joystick.pdf"
+							target="FrameMain">
+								capteur joystick
+							</a>
+
+				</li>
+
+						<li class="" id="capteurluminosite" data="">
+							<a
+							href="Documents/capteur luminosité.pdf"
+							target="FrameMain">
+								capteur luminosit&eacute;
+							</a>
+
+				</li>
+
+						<li class="" id="capteurpotentiometre" data="">
+							<a
+							href="Documents/capteur potentiomètre.pdf"
+							target="FrameMain">
+								capteur potentiom&egrave;tre
+							</a>
+
+				</li>
+
+						<li class="" id="capteursuiveurdeligne" data="">
+							<a
+							href="Documents/capteur suiveur de ligne.pdf"
+							target="FrameMain">
+								capteur suiveur de ligne
+							</a>
+
+				</li>
+
+						<li class="" id="capteurTemperatureethumidite" data="">
+							<a
+							href="Documents/capteur Temp et humidité.pdf"
+							target="FrameMain">
+								capteur Temp&eacute;rature et humidit&eacute;
+							</a>
+
+				</li>
+
+						<li class="" id="capteurultrason" data="">
+							<a
+							href="Documents/capteur ultrason.pdf"
+							target="FrameMain">
+								capteur ultrason
+							</a>
+
+				</li>
+
+						<li class="" id="gestionentreeanalogique" data="">
+							<a
+							href="Documents/gestion entrée analogique.pdf"
+							target="FrameMain">
+								gestion entr&eacute;e analogique
+							</a>
+
+				</li>
+
+						<li class="" id="pilotermoteur_1_sens" data="">
+							<a
+							href="Documents/moteur_1_sens.pdf"
+							target="FrameMain">
+								piloter moteur_1_sens
+							</a>
+
+				</li>
+
+						<li class="" id="piloter_1_ecran_lcd" data="">
+							<a
+							href="Documents/piloter_1_ecran_lcd.pdf"
+							target="FrameMain">
+								piloter_1_ecran_lcd
+							</a>
+
+				</li>
+
+						<li class="" id="piloter_moteur_pas_a_pas" data="">
+							<a
+							href="Documents/piloter_moteur_pas_a_pas.pdf"
+							target="FrameMain">
+								piloter_moteur_pas_a_pas
+							</a>
+
+				</li>
+
+						<li class="" id="piloter_une_del" data="">
+							<a
+							href="Documents/piloter_une_del.pdf"
+							target="FrameMain">
+								piloter_une_del
+							</a>
+
+				</li>
+
+						<li class="" id="piloterunservomoteur" data="">
+							<a
+							href="Documents/servo moteur.pdf"
+							target="FrameMain">
+								piloter un servo moteur
+							</a>
+
+				</li>
+
+						<li class="" id="sortieanalogique" data="">
+							<a
+							href="Documents/sortie analogique.pdf"
+							target="FrameMain">
+								sortie analogique
+							</a>
+
+				</li>
+
+						<li class="" id="sortieviaunrelais" data="">
+							<a
+							href="Documents/sortie_via_relais.pdf"
+							target="FrameMain">
+								sortie via un relais
+							</a>
+
+				</li></ul></li>
+
+						<li class="folder" id="DocumentationAppInventor" data="icon: '1.png'">
+							<a
+							href="DocumentationAppInventor.html"
+							target="FrameMain">
+								Documentation AppInventor
+							</a>
+
+				<ul>
+
+						<li class="" id="APPinventor" data="">
+							<a
+							href="Documents/APPinventor.pdf"
+							target="FrameMain">
+								APPinventor
+							</a>
+
+				</li>
+
+						<li class="" id="APPinventorlampe" data="">
+							<a
+							href="Documents/APPinventor-lampe.pdf"
+							target="FrameMain">
+								APPinventor-lampe
+							</a>
+
+				</li>
+
+						<li class="" id="APPinventorlampebluetooth" data="">
+							<a
+							href="Documents/APPinventor-lampe-bluetooth.pdf"
+							target="FrameMain">
+								APPinventor-lampe-bluetooth
+							</a>
+
+				</li>
+
+						<li class="" id="APPinventorlampevariateurbluetoo" data="">
+							<a
+							href="Documents/APPinventor-lampe-variateur-bluetooth.pdf"
+							target="FrameMain">
+								APPinventor-lampe-variateur-bluetooth
+							</a>
+
+				</li></ul></li>
+
+						<li class="" id="DocumentationSolidworks" data="icon: '1.png'">
+							<a
+							href="Documents\SW-2SI\index.html"
+							target="FrameMain">
+								Documentation Solidworks
+							</a>
+
+				</li>
+
+						<li class="" id="Tracker" data="icon: '0.png'">
+							<a
+							href="Documents/Tracker_tutoriel-V2.pdf"
+							target="FrameMain">
+								Tracker
+							</a>
+
+				</li>
+
+						<li class="" id="Preparerunoral" data="icon: '0.png'">
+							<a
+							href="Preparerunoral.html"
+							target="FrameMain">
+								Pr&eacute;parer un oral
+							</a>
+
+				</li>
+
+						<li class="" id="Ressources" data="icon: '12.png'">
+							<a
+							href="Ressources.html"
+							target="FrameMain">
+								Ressources
+							</a>
+
+				</li>
+
+						<li class="" id="Sources" data="icon: '20.png'">
+							<a
+							href="Sources.html"
+							target="FrameMain">
+								Sources
+							</a>
+
+				</li>
+				
+				</ul>
+		</div>
+		
+		
+		
+	</div>
+    
+</body>
+
+</html>
+

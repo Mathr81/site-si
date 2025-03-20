@@ -1,0 +1,174 @@
+﻿
+
+<html>
+	
+<head>
+	<title>Arduino</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 9.0.0.156">
+	<meta name="description" content="" /> 
+	<meta name="keywords" content="">
+	
+	
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #000080;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "Index.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Arduino");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	
+</head>
+
+<body>
+
+
+
+	
+		<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Arduino</h1>
+				
+				
+			</div>
+			
+			<div id="topic_header_nav">
+				
+				
+				<a href="Materiels-Logiciels1.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				
+				
+				<a href="Materiels-Logiciels1.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				
+				
+				<a href="Ardublock.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+	
+	
+	<div id="topic_content">
+		
+<p class="rvps3"><span class="rvts6"><br/></span></p>
+<div class="rvps3">
+<table width="100%" cellpadding="0" style="border-width: 0px; border-spacing: 0px; margin: 0px auto;">
+ <tr style="vertical-align: top;">
+  <td style="border-width : 1px; border-color: canvastext; border-style: solid; padding: 0px; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps5"><img alt="" style="width : 361px; height : 81px; padding : 1px;" src="lib/banniere_barral.png"><span class="rvts15"> </span><span class="rvts16">Science de l'Ingénieur</span></p>
+   <p class="rvps3"><span class="rvts30"><br/></span></p>
+  </td>
+ </tr>
+ <tr style="vertical-align: top;">
+  <td style="border-width : 1px; border-color: #666699; border-style: solid; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps17"><span class="rvts27">ARDUINO</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts29"><br/></span></p>
+<p class="rvps15"><span class="rvts28">La description de la carte Arduino</span></p>
+<p class="rvps3"><img alt="" style="width : 997px; height : 555px; padding : 1px;" src="lib/NouvelElement9.png"></p>
+<div class="rvps3">
+<table width="100%" cellpadding="1" style="border-width: 0px; border-spacing: 2px; margin: 0px auto;">
+ <tr style="vertical-align: top;">
+  <td style="padding: 1px; width: 181px;">
+   <p class="rvps3"><img alt="" style="width : 153px; height : 104px; padding : 1px;" src="lib/NouvelElement15.png"></p>
+  </td>
+  <td style="padding: 1px; width: 808px;">
+   <p class="rvps11"><span class="rvts19">&nbsp; &nbsp; &nbsp; L’Arduino est une carte électronique en Matériel Libre. Elle peut servir:</span></p>
+   <p class="rvps13"><span class="rvts19">&nbsp; &nbsp; &nbsp;1- pour des dispositifs interactifs autonomes simples&nbsp;</span></p>
+   <p class="rvps13"><span class="rvts19">&nbsp; &nbsp; &nbsp;2- comme interface entre capteurs/actionneurs et ordinateur&nbsp;</span></p>
+   <p class="rvps13"><span class="rvts19">&nbsp; &nbsp; &nbsp;3- comme programmateur de certains micro-contrôleurs.</span></p>
+   <p class="rvps13"><span class="rvts19"><br/></span></p>
+   <p class="rvps13"><span class="rvts19">Elle se présente sous cette forme :</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts19"><br/></span></p>
+<p class="rvps14"><img alt="" style="padding : 1px;" src="lib/NouvelElement2930.png"></p>
+<p class="rvps11"><span class="rvts19">Cette carte est basée sur un microcontrôleur (mini-ordinateur) Atmel ATMEGA8 ou ATMEGA168. Elle dispose dans sa version de base de 1 Ko de mémoire vive, et 8Ko de mémoire flash pour stocker ses programmes. Elle peut être connectée à 13 entrées ou sorties numériques, dont 3 PWM (pouvant donner 3 sorties analogiques : cf http://fr.wikipedia.org/wiki/PWM) et 6 entrées analogiques convertissant en 10 bits.</span></p>
+<p class="rvps11"><span class="rvts19">Dans la version la plus courante, la communication avec l’ordinateur se fait par un port USB. Il existe plusieurs versions de l’Arduino, dont une version miniaturisée, et d’autres projets sont également en gestation. La carte dispose d’un logiciel système interne (modifiable) et des programmes utilisateur</span></p>
+<p class="rvps3"><span class="rvts19"><br/></span></p>
+<p class="rvps15"><span class="rvts28">La carte "Shield"</span></p>
+<p class="rvps2"><span class="rvts31"><br/></span></p>
+<p class="rvps2"><span class="rvts32">On peut lui associer d'autres cartes, celles-ci permettent un câblage assez rapide de certains composants.</span></p>
+<p class="rvps2"><span class="rvts32"><br/></span></p>
+<p class="rvps14"><img alt="" style="width : 506px; height : 396px; padding : 1px;" src="lib/NouvelElement4546.png"></p>
+<p class="rvps16"><span class="rvts28">L'interface de programmation et sa configuration.</span></p>
+<p class="rvps11"><span class="rvts19"><br/></span></p>
+<p class="rvps2"><span class="rvts19">Le logiciel permettant la programmation se présente sous cette forme . En premier lieu vous devez connecter la carte à l'ordinateur par un câble USB .... &nbsp;pour le reste nous allons y venir bientôt.</span></p>
+<p class="rvps11"><span class="rvts19"><br/></span></p>
+<div class="rvps11">
+<table width="100%" cellpadding="1" style="border-color: canvastext; border-style: solid; border-width: 1px; border-spacing: 2px;">
+ <tr style="vertical-align: top;">
+  <td style="padding: 1px; width: 567px;">
+   <p class="rvps12"><img alt="" style="width : 501px; height : 497px; padding : 1px;" src="lib/NouvelElement2728.png"></p>
+   <p class="rvps2"><span class="rvts19">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Lancer le programme Arduino (environnement de travail : IDE).</span></p>
+   <p class="rvps3"><span class="rvts19">&nbsp; &nbsp; &nbsp; &nbsp;Dans le menu Outils -&gt; Type de carte, choisir Arduino UNO dans</span></p>
+   <p class="rvps2"><span class="rvts19">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; notre cas.</span></p>
+  </td>
+  <td style="padding: 1px; width: 541px;">
+   <p class="rvps14"><img alt="" style="width : 414px; height : 494px; padding : 1px;" src="lib/NouvelElement28.png"></p>
+   <p class="rvps14"><span class="rvts19">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Dans le menu Outils -&gt; Port série, choisir COM5 ou un autre cela peut dépendre de l'ordinateur.</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p></p>
+<p class="rvps7" style="clear: both;"><span class="rvts21">Créé avec HelpNDoc Personal Edition: </span><a class="rvts22" href="https://www.helpndoc.com/fr/tour-des-fonctionnalites">Créer des livres électroniques facilement</a></p>
+
+	</div>
+	
+	
+		<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				http://jeanpaul.bousquet.free.fr
+			</div>
+		</div>
+	
+	
+
+	
+</body>
+	
+</html>
+
